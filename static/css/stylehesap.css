@@ -1,0 +1,9 @@
+body{
+    background-size: cover;
+    background-repeat: no-repeat;
+    background: url("../img/15.jpg");
+}
+
+.ustten{
+    margin-top: 120px;
+}

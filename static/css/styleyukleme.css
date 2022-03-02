@@ -1,0 +1,19 @@
+body {
+    background-image: url("../img/14.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.ustten
+{
+  margin-top: 60px;
+}
+table{
+  border: none;
+  background: rgba(255,255,255,0.25)
+}
+
+.yazi{
+    color: white;
+}
+
+
