@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" href=" {% static 'css/stylekayit.css' %}" >
+
+{% endblock %}
+{% block title %}Düzenle{% endblock %}
+{% block sayfa %}
+
+    <div class="ustten main">
+        <div class="file-field container2" align="center">
+            <div class="d-flex justify-content-center signup-content">
+                {% if user.is_authenticated %}
+                <div class="form-group">
+                    <form method="post">{% csrf_token %}
+                        <table class="table-responsive table-hover">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <h3>Dosya Bilgileri</h3>
+                                </td>
+                            </tr>
+                        </thead>
+                              {% if user.username == "admin" %}
+                                  <tr>
+                                    <td>
+                                      Admin bilgilerine sadece admin paneli üzerinden erişilebilir!
+                                    </td><td></td>
+                                  </tr>
+                              {% endif %}
+                            <tr>
+                                <td>Görünen Ad :</td>
+                                <td><input class="form-control" type="text" name="dosyaAdı"value="{{ dosya.dosyaAdı }}"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Ders Adı :</td>
+                                <td><input class="form-control" type="text" name="dersAdi"value="{{ dosya.dersAdi }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Bölüm Adı :</td>
+                                <td><input class="form-control" type="text" name="bolumAdi" value="{{ dosya.bolumAdi }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Okul Adı :</td>
+                                <td><input class="form-control" type="text" name="okulAdi" value="{{ dosya.okulAdi }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Açıklama :</td>
+                                <td><input class="form-control" type="text" name="aciklama" value="{{ dosya.aciklama }}"></td>
+                            </tr>
+                            <tr>
+                                <td><input type="hidden" name="dId" value="{{ dosya.dId }}"></td>
+                                <td colspan="2" align="right"><button type="submit" class="btn btn-primary">Kaydet</button></td>
+                            </tr>
+                        </table>
+                    </form>
+                    {% else %}
+                        <br><br>
+                        <p class="yazi">Bu Sayfa Üyelere Özeldir!Lütfen <a href="/accounts/login">Giriş Yapın</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

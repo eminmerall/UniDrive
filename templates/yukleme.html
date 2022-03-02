@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load static %}
+
+    {% block head %}
+        <link rel="stylesheet" href=" {% static 'css/styleyukleme.css' %}" >
+    {% endblock %}
+
+{% block title %}Yükleme{% endblock %}
+
+{% block sayfa %}
+    <br>  <br><br><br><br><br><br><br><br><br>
+    <!-- ====== Dosya Seç- Yükle ====== -->
+    <div class="ustten">
+        <div class="file-field" align="center">
+
+            <div class="d-flex justify-content-center">
+                        {% if user.is_authenticated %}
+            </div>
+        <div class="form-group">
+              <br>
+            <form method="post" enctype="multipart/form-data" action="">{% csrf_token %}
+              <table id="myTable" class="table table-borderless w-50">
+                  <tr>
+                      <td class="w-auto">
+                          <div class="input-group">
+                              <div class="input-group-prepend">
+                                <span class="input-group-text" id="inputGroupFileAddon01">Dosya Seç</span>
+                              </div>
+                              <div class="custom-file">
+                                <input type="file" name="myFile" class="custom-file-input" id="inputGroupFile01"
+                                 aria-describedby="inputGroupFileAddon01">
+                                <label class="custom-file-label" for="inputGroupFile01">Dosya Seç</label>
+                              </div>
+                           </div>
+                      </td>
+                  </tr>
+                  <tr>
+                     <td class="w-50">
+                        <input type="text" class="form-control" name="dosyaAdi" id="dosyaAdi" placeholder="Dosya Adı">
+                     </td>
+                  </tr>
+                  <tr>
+                     <td class="w-50">
+                         <input type="text" class="form-control" name="dersAdi" id="dersAdi" placeholder="Ders Adı">
+                     </td>
+                   </tr>
+                <tr>
+                 <td class="w-50">
+                    <input type="text" class="form-control" name="aciklama" id="aciklama" placeholder="Açıklama">
+                 </td>
+                </tr>
+
+                 <tr>
+                 <td class="w-50">
+                    <input type="text" class="form-control" name="okulAdi" id="okulAdi" placeholder="Okul Adı">
+                 </td>
+                </tr>
+                  <tr>
+                 <td class="w-50">
+                    <input type="text" class="form-control" name="bolumAdi" id="bolumAdi" placeholder="Bölüm Adı">
+                 </td>
+                </tr>
+                </table>
+                          <button type="submit" id="kaydet" class="btn btn-primary">Yükle</button>
+                </form>
+        </div>
+        </div>
+                        {% else %}
+                            <p class="yazi">Bu Sayfa Üyelere Özeldir!
+                            Lütfen <a href="/accounts/login">Giriş Yapın</a>  </p>
+            {% endif %}
+  </div>
+
+{% endblock %}
+

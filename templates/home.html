@@ -1,0 +1,127 @@
+{% extends 'base.html' %}
+{% load static %}
+
+      {% block title %}Anasayfa{% endblock %}
+  {% block head %}
+      <link rel="stylesheet" href=" {% static 'css/stylehome.css' %}" >
+  {% endblock %}
+    {% block sayfa %}
+        <section id="hero" class="align-items-center">
+    <div class="masthead text-white text-center" >
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <h1 class="mb-5">UniDrive'a hoş geldin!</h1>
+            <h2 class="mb-5">Burası aradığın ders notunu bulmak için en mükemmel yer :)</h2>
+          </div>
+
+          <div class="col-xl-4 mx-auto">
+              {% if user.is_authenticated %}
+                  {% else %}
+                  <form>
+                      <div class="row">
+                          <button onclick="" type="button" class="btn btn-block btn-lg btn-primary"><a href="/accounts/login/"><i class="fas fa-sign-in-alt mr-3"></i>Oturum Aç</a></button>
+                      </div>
+                  </form>
+              {% endif %}
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- Hero -->
+  <!-- ======= About Section ======= -->
+  <section id="about" class="about">
+    <div class="container">
+
+      <div class="row">
+        <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-left">
+         <img src="{% static 'img/about.jpg' %}" class="img-fluid" alt="">
+        </div>
+        <div class="col-lg-6 pt-4 pt-lg-0 order-2 order-lg-1 content" data-aos="fade-right">
+          <h3>UniDrive Tamamen Öğrenciler için hazırlanmış bir site</h3>
+          <p class="font-italic">
+            Öğrencilerin, özellikle üniversite öğrencilerinin eğitim hayatları
+              boyunca karşılaştıkları en büyük sorunlardan birinin ders notu bulmak olduğunu biliyoruz. Bu yüzden;</p>
+          </p>
+          <ul>
+            <li><i class="icofont-check-circled"></i>Sitemizdeki tüm dökümanlar tamamen ücretsiz,</li>
+            <li><i class="icofont-check-circled"></i>Tüm dökümanlar herkesin erişimine açık,</li>
+            <li><i class="icofont-check-circled"></i>Herhangi bir yasal sorun olmadığı sürece dosyalar sunucumuzda kalmaya devam eder. Böylelikle bulabileceğiniz not çeşitliliği sürekli artar.</li>
+          </ul>
+          <p>
+            Bilginin gücü paylaşmaktan gelir! Hadi sizde aramıza katılıp arkadaşlarınızla not alışverişine başlayın :)
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </section><!-- End About Section -->
+
+  <main id="main">
+
+    <!-- ======= Services Section ======= -->
+    <section id="services" class="services">
+      <div class="container">
+
+        <div class="section-title">
+          <span>Hizmetlerimiz</span>
+          <h2>Hizmetlerimiz</h2>
+        </div>
+
+        <div class="row">
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch" data-aos="fade-up">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bxl-dribbble"></i></div>
+              <h4><a href="">Tamamen Ücretsiz</a></h4>
+              <p>Web sitemizdeki tüm dosyalar ücretsiz ve her zaman öyle kalacak</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-md-0" data-aos="fade-up" data-aos-delay="150">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-file"></i></div>
+              <h4><a href="">Çevrimiçi</a></h4>
+              <p>Sistemimizdeki tüm dosyaları kolayca cihazınıza indirebilirsiniz</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4 mt-lg-0" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-tachometer"></i></div>
+              <h4><a href="">Yüksek Performans</a></h4>
+              <p>Sitemizde minumum görsel, maksimum performans mantığıyla çalışıyoruz. </p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="450">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-world"></i></div>
+              <h4><a href="">Her Yerden Erişim</a></h4>
+              <p>Tüm dosyalarımıza 7/24 her yerden erişim sağlayabilirsiniz.</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="600">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-slideshow"></i></div>
+              <h4><a href="">Tüm Cihazlar ile uyumlu</a></h4>
+              <p>Web sitemiz tüm cihazlar ile tamamen uyumlu olarak tasarlandı</p>
+            </div>
+          </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch mt-4" data-aos="fade-up" data-aos-delay="750">
+            <div class="icon-box">
+              <div class="icon"><i class="bx bx-arch"></i></div>
+              <h4><a href="">Üniversiteli Dostu</a></h4>
+              <p>Sitemizdeki dökümanların büyük bir bölümü üniversite öğrencileri için</p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </section>
+  </main>
+    {% endblock %}

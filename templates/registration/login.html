@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Üye Girişi{% endblock %}
+
+{% block head %}
+        <link rel="stylesheet" href=" {% static 'css/stylegiris.css' %}" >
+{% endblock %}
+{% block menu %}
+    <li><a href="/register/">Kayıt Ol</a></li>
+    <li><a href="/accounts/login/">Giriş Yap</a></li>
+{% endblock %}
+
+{% block sayfa %}
+
+    <div class="container">
+	<div class="d-flex justify-content-center h-100">
+		<div class="card">
+			<div class="card-header">
+				<h3>Üye Girişi</h3>
+                            <p>
+                {% if user.is_authenticated %}
+                    <p class="yazi">Merhaba {{ user.username }}, giriş yaptığınız için tekrar giriş yapamazsınız!
+                    Çıkış yapmak için <a href="{% url 'logout' %}">Tıklayın</a></p>
+                    {% else %}
+                    <p class="yazi">Aşağıdaki Formu kullanarak giriş yapabilirsiniz</p>
+                {% endif %}
+            </p>
+			</div>
+                {% if user.is_authenticated %}
+                {% else %}
+			<div class="card-body">
+
+				<form action="" method="post">
+                    {% csrf_token %}
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-user"></i></span>
+						</div>
+						<input type="text" name="username" required id="id_username" class="form-control" placeholder="Kullanıcı adı">
+					</div>
+					<div class="input-group form-group">
+						<div class="input-group-prepend">
+							<span class="input-group-text"><i class="fas fa-key"></i></span>
+						</div>
+						<input type="password" name="password"  required id="id_password" class="form-control" placeholder="Şifre">
+					</div>
+					<div class="form-group">
+						<input type="submit" value="Giriş" class="btn float-right login_btn">
+					</div>
+				</form>
+			</div>
+
+			<div class="card-footer">
+				<div class="d-flex justify-content-center links">
+					Üye değil misin?<a href="/register/">Üye ol</a>
+				</div>
+			</div>
+        {% endif %}
+		</div>
+	</div>
+</div>
+
+{% endblock %}

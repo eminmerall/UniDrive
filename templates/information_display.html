@@ -1,0 +1,10 @@
+{% load static %}
+<!--  key and value is iterated in a loop -->
+<!-- Key is filename and file url where value is value of each key -->
+{% for key, value in context.items %}
+{{key}}<br>{{value}}
+<br>
+<br>
+{% endfor %}
+<!-- This is used to redirect the user to home page where he or she can upload more files -->
+<a href="{% url 'file_storage_to_db' %}">Home Page</a>

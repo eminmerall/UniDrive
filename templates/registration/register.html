@@ -1,0 +1,55 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Kayıt Olma{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href=" {% static 'css/stylekayit.css' %}" >
+{% endblock %}
+{% block menu %}
+    <li><a href="/register/">Kayıt Ol</a></li>
+    <li><a href="/accounts/login/">Giriş Yap</a></li>
+{% endblock %}
+{% block sayfa %}
+
+    <div class="main ustten">
+        <section class="signup">
+            <!-- <img src="images/signup-bg.jpg" alt=""> -->
+            <div class="container2">
+                <div class="signup-content">
+                    {% if user.is_authenticated %}
+                    <h1 class="ustten"><p class="yazi">Merhaba {{ user.username }}, giriş yaptığınız için kayıt formunu kullanamazsınız!
+                    Çıkış yapmak için <a href="{% url 'logout' %}">Tıklayın</a></p></h1>
+                    {% else %}
+                    <form method="POST" class="signup-form">{% csrf_token %}
+                        <h2 class="form-title">Üyelik Oluştur</h2>
+                        <div class="form-group">
+                            <input type="text" class="form-input" name="username" required id="id_username" placeholder="Kullanıcı Adı"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="email" class="form-input" name="email" required id="id_email" placeholder="E-Posta Adresiniz"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password1" required id="id_password1" placeholder="Şifre"/>
+                        </div>
+                        <div class="form-group">
+                            <input type="password" class="form-input" name="password2" required id="id_password2" placeholder="Şifre(tekrar)"/>
+                        </div>
+                        <div>
+                            
+                        </div>
+                        <div class="form-group">
+                            <input type="submit" class="form-submit" value="Kayıt Ol"/>
+                        </div>
+                    </form>
+
+                    <p class="loginhere">
+                        Zaten üye misiniz? <a href="/accounts/login/" class="loginhere-link">Giriş Yapın</a>
+                    </p>
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+    </div>
+  <br><br>
+{% endblock %}
+

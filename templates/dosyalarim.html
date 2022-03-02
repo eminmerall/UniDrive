@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Dosyalarim{% endblock %}
+
+{% block head %}
+    <link rel="stylesheet" href=" {% static 'css/styledosyalarim.css' %}" >
+
+    <link rel="stylesheet" type="text/css" href="{% static 'DataTables/datatables.css' %}"/>
+    <link rel="stylesheet" type="text/css" href="{% static 'DataTables/datatables.css' %}"/>
+    <script type="text/javascript" src="{% static 'DataTables/datatables.js' %}"></script>
+{% endblock %}
+
+
+{% block sayfa %}
+
+
+<br><br><br> <br><br> <br>
+<div class="container ustten align-items-center">
+    {% if user.is_authenticated %}
+        <div>
+        <h3 align="center">Dosyalarım</h3>
+        <br>
+        <div class="table-responsive">
+        <table id="myTable" class="table table-striped table-bordered display" bgcolor="white">
+            <thead class="bg-primary">
+                <tr>
+                    <th style="width: auto;">ID</th>
+                    <th>Dosya Adı</th>
+                    <th>Görünen Ad</th>
+                    <th>Ders Adı</th>
+                    <th>Bölüm Adı</th>
+                    <th style="width: auto;">Okul Adı</th>
+                    <th>Açıklama</th>
+                    <th>Oluşturma</th>
+                    <th>Son Güncelleme</th>
+                    <th>İşlemler</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for dosya in dosyalar %}
+                <tr>
+                    <td>{{ dosya.dId }}</td>
+                    <td style=" width: 5px; ">{{ dosya.file_name }}</td>
+                    <td>{{ dosya.dosyaAdı }}</td>
+                    <td>{{ dosya.dersAdi }}</td>
+                    <td>{{ dosya.bolumAdi }}</td>
+                    <td>{{ dosya.bolumAdi }}</td>
+                    <td>{{ dosya.aciklama }}</td>
+                    <td>{{ dosya.olusturma }}</td>
+                    <td>{{ dosya.last_update }}</td>
+                    <td><a href="/duzenle/{{ dosya.dId }}"><button class="btn-primary w-50 rounded"><i class="fas fa-edit"></i></button></a>  <a href="/sil/{{ dosya.dId }}"><button class="btn-danger w-50 rounded"><i class="fas fa-trash-alt"></i></button></a></td>
+                </tr>
+            {% endfor %}
+            </tbody>
+            </table>
+        </div>
+    {% else %}
+    <div class="ort">
+        <p class="yazi">
+            Bu Sayfa Üyelere Özeldir!Lütfen <a href="/accounts/login">Giriş Yapın</a>
+        </p>
+    </div>
+
+{% endif %}
+</div>
+
+    <script>
+        $(document).ready( function () {
+            $('#myTable').DataTable({
+        "language": {
+            "sSearch": "Ara:",
+            "sInfoEmpty": "Kayıt yok",
+            "oPaginate": {
+                "sFirst":    "İlk",
+                "sLast":     "Son",
+                "sNext":     "Sonraki",
+                "sPrevious": "Önceki"
+            },
+            "sZeroRecords": "Eşleşen kayıt bulunamadı",
+            "sInfo": "_TOTAL_ kayıttan _START_ - _END_ arasındaki kayıtlar gösteriliyor",
+            "sInfoFiltered":  "(_MAX_ kayıt içerisinden bulunan)",
+            "sLengthMenu":     "Sayfada _MENU_ kayıt göster",
+        }
+    });
+        });
+    </script>
+      </div>
+      {% endblock %}

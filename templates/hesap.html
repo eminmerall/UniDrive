@@ -1,0 +1,76 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/stylehesap.css' %}">
+{% endblock %}
+{% block title %}Kullanıcı Sayfası{% endblock %}
+{% block sayfa %}
+    <div class="ustten">
+        <div class="file-field" align="center">
+            <div class="d-flex justify-content-center">
+                {% if user.is_authenticated %}
+                <div class="form-group">
+                    <form method="post">{% csrf_token %}
+                        <table class="table-responsive table-hover">
+                        <thead>
+                            <tr>
+                                <td>
+                                    <h3>Kullanıcı Bilgileri</h3>
+                                </td>
+                            </tr>
+                        </thead>
+                              {% if user.username == "admin" %}
+                                  <tr>
+                                    <td>
+                                      Admin bilgilerine sadece admin paneli üzerinden erişilebilir!
+                                    </td><td></td>
+                                  </tr>
+                              {% endif %}
+                              {% for kullanici in kullanicilar %}
+
+                            <tr>
+                                <td>Kullanıcı Adı :</td>
+                                <td><input class="form-control" type="text" name="kAd" disabled value="{{ kullanici.kAd }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Öğrenci No :</td>
+                                <td><input class="form-control" type="text" name="ogrNo"value="{{ kullanici.ogrNo }}"></td>
+                            </tr>
+
+                            <tr>
+                                <td>Adı :</td>
+                                <td><input class="form-control" type="text" name="adi"value="{{ kullanici.adi }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Soyadı :</td>
+                                <td><input class="form-control" type="text" name="soyadi" value="{{ kullanici.soyadi }}"></td>
+                            </tr>
+                            <tr>
+                                <td>E-Mail :</td>
+                                <td><input class="form-control" type="text" name="mail" value="{{ kullanici.mail }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Okul :</td>
+                                <td><input class="form-control" type="text" name="okul" value="{{ kullanici.okul }}"></td>
+                            </tr>
+                            <tr>
+                                <td>Bölüm :</td>
+                                <td><input class="form-control" type="text" name="bolum" value="{{ kullanici.bolum }}"></td>
+                            </tr>
+                            <tr>
+                                <td></td>
+                                <td colspan="2" align="right"><button type="submit" class="btn btn-primary">Kaydet</button>
+                    </td>
+                            </tr>
+                                  {% endfor %}
+                        </table>
+                    </form>
+                    {% else %}
+                        <br><br>
+                        <p class="yazi">Bu Sayfa Üyelere Özeldir!Lütfen <a href="/accounts/login">Giriş Yapın</a>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
