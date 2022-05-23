@@ -7,7 +7,7 @@ Proje, Python-Django kullanılarak oluşturuldu. Bu projeyi aynı zamanda "<i>Bu
 Projede;
 - Dosya Yükleme,
 - Dosya İndirme,
-- Dosya silme - düzenleme işlemleri yapılabilmektedir.
+- Dosya silme ve düzenleme işlemleri yapılabilmektedir.
 
-Yüklenen dosyalar sadece üyelerin görebildiği bir havuzda toplanmakta ve buradan indirilmekte. 
+Yüklenen dosyalar sadece üyelerin görebildiği bir havuzda toplanmakta ve buradan indirilmekte. Üyelik, Site yönetimi, modüllere özel işlemler Django admin panelinden yönetilmektedir. Projede ayrıca, Bootstrap, Jquery, Datatable gibi kütüphaneler de kullanılmıştır.
 
